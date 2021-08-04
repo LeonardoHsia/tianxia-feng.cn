@@ -1,0 +1,79 @@
+@import './handle.scss';
+
+// body {
+//     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+//     a {
+//         text-decoration: none;
+//         cursor: pointer;
+//     }
+
+//     .light-text {
+
+//     }
+//     .under-line {
+//         text-decoration: underline;
+//     }
+//     @mixin full-width {
+//         width: 100%;
+//     }
+//     .flex-center {
+//         justify-content: center;
+//     }
+//     .router-view {
+//         @include full-width;
+//     }
+
+// }
+@mixin button($value: default) {
+    background-color: themed('btn-#{$value}-background');
+    color: themed('btn-#{$value}-color');
+    border: 1px solid themed('btn-#{value}-color');
+    outline: 0;
+    // border-radius: 10px;
+
+    &:hover {
+        background-color: themed('btn-#{$value}-background-hover');
+    }
+}
+
+@mixin btn-size {
+    padding: .4rem .8rem;
+    border-radius: .2rem;
+}
+
+@mixin btn-size-sm {
+    padding: .2rem .4rem;
+    border-radius: .4rem;
+}
+@mixin btn-size-lg {
+    padding: .6rem 1.2rem;
+    border-radius: .4rem;
+}
+
+@include themeify ($themes) {
+    .theme-btn-default {
+        @include button;
+        @include btn-size;
+
+        &.sm {
+            @include btn-size-sm;
+        }
+
+        &.lg {
+            @include btn-size-lg;
+        }
+    }
+    
+    .theme-btn-primary {
+        @include button('primary');
+        @include btn-size;
+
+        &.sm {
+            @include btn-size-sm;
+        }
+        
+        &.lg {
+            @include btn-size-lg;
+        }
+    }
+}

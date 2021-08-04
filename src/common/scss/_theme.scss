@@ -1,0 +1,22 @@
+@import './_variable.scss';
+
+$themes: (
+    default: (
+        btn-default-background: nth($default_theme, 1),
+        btn-default-background-hover: nth($default_theme, 2),
+        btn-default-color: nth($default_theme, 5),
+
+        btn-primary-background: nth($default_theme, 3),
+        btn-primary-background-hover: nth($default_theme, 4),
+        btn-primary-color: #FFFFFF,
+    ), 
+    dark: (
+        btn-default-background: nth($dark_theme, 1),
+        btn-default-background-hover: nth($dark_theme, 2),
+        btn-default-color: nth($dark_theme, 5),
+
+        btn-primary-background: nth($dark_theme, 3),
+        btn-primary-background-hover: nth($dark_theme, 4),
+        btn-primary-color: #FFFFFF,
+    )
+);
