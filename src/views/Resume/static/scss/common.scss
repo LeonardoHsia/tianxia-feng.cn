@@ -1,1 +1,10 @@
-$blockBorderColor: red;
+$sectionBorderColor: red;
+
+html {
+    font-size: 14px;
+}
+body {
+    div, p, a, section, aside, h1, h2, h3, h4, h5, h6 {
+        box-sizing: border-box;
+    }
+}

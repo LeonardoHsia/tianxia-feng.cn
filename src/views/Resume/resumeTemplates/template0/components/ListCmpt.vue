@@ -3,9 +3,6 @@
         <ul v-if="list.length" class="list" :class="{'editable': isEditable}">
             <list-item-cmpt v-for="(field, idx) in list" :key="idx" :data="data" :fieldConf="field" @delete="showDeleteListItemDialog"></list-item-cmpt>
         </ul>
-        <template v-else>
-
-        </template>
         <el-dialog class="delete-list-item-dialog" ref="deleteListItem" title="是否删除此字段" :visible.sync="deleteListItemVisible" width="20%">
             <span slot="footer">
                 <el-checkbox v-model="deleteSilently" style="float: left;">
@@ -86,6 +83,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    padding-left: 1.6rem;
 
     &.editable {
         .list-item {

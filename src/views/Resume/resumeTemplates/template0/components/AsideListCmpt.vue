@@ -1,8 +1,8 @@
 <template>
-    <div class="aside-list" :class="{'hover': showEdit}" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave">
-        <i class="el-icon-edit-outline edit-icon" v-if="isEditable && true" @click="editFunc"></i>
+    <div class="aside-list section" :class="{'hover': showEdit}" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave">
+        <i class="el-icon-edit-outline edit-icon" v-if="isEditable && showEdit" @click="editFunc"></i>
         <div>
-            <h1>{{ conf.title }}</h1>
+            <h2 class="section-title">{{ conf.title }}</h2>
             <list-cmpt :data="data" :conf="conf"></list-cmpt>
         </div>
     </div>

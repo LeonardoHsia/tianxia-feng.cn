@@ -1,18 +1,29 @@
+@import '@resume/static/scss/common';
+
 .aside-list {
     position: relative;
     border: 1px dashed transparent;
     background: transparent;
+    padding: 1rem 1.5rem;
+    width: 100%;
     
     &.hover {
         border-color: #333;
         background: #ddd;
     }
     
-    
     .edit-icon {
         position: absolute;
         top: 1rem;
         right: 1rem;
         cursor: pointer;
+    }
+}
+
+.section {
+    .section-title {
+        font-size: 1.2rem;
+        margin-top: .5rem;
+        margin-bottom: 1rem;
     }
 }

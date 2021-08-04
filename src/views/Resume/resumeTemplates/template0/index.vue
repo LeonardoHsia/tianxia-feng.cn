@@ -1,9 +1,9 @@
 <template>
     <div class="template">
         <aside>
-            <photo-box-cmpt :data="resumeInfo.basicInfo"></photo-box-cmpt>
-            <aside-list-cmpt :data="resumeInfo.basicInfo" :conf="basicInfoConfs"></aside-list-cmpt>
-            <aside-list-cmpt :data="resumeInfo.jobIntention" :conf="jobIntentionConfs"></aside-list-cmpt>
+            <photo-box-cmpt :data="basicInfo"></photo-box-cmpt>
+            <aside-list-cmpt :data="basicInfo" :conf="basicInfoConfs"></aside-list-cmpt>
+            <aside-list-cmpt :data="jobIntention" :conf="jobIntentionConfs"></aside-list-cmpt>
         </aside>
         <section>
             <div class="empty-block"></div>
@@ -26,6 +26,13 @@ export default {
             default: () => {}
         }
     },
+    created () {
+        Object.keys(this.resumeInfo).forEach(k => {
+            Object.assign(this, {
+                [k]: this.resumeInfo[k]
+            })
+        })
+    },
     components: {
         'photo-box-cmpt': PhotoBoxCmpt,
         'aside-list-cmpt': AsideListCmpt
@@ -33,7 +40,9 @@ export default {
     data () {
         return {
             basicInfoConfs: BasicInfoConfs,
-            jobIntentionConfs: JobIntentionConfs
+            jobIntentionConfs: JobIntentionConfs,
+            basicInfo: {},
+            jobIntention: {}
         }
     },
     mounted () {

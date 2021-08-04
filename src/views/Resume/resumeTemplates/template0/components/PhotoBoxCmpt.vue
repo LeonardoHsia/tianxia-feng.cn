@@ -27,7 +27,4 @@ export default {
 <style lang="scss">
 @import '~@resume/static/scss/common.scss';
 
-.photo-box {
-    border: 1px solid $blockBorderColor;
-}
 </style>
