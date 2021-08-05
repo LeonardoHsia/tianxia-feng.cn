@@ -1,16 +1,11 @@
 <template>
-    <div class="aside-list section" :class="{'hover': showEdit}" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave">
-        <i class="el-icon-edit-outline edit-icon" v-if="isEditable && showEdit" @click="editFunc"></i>
-        <div>
-            <h2 class="section-title">{{ conf.title }}</h2>
-            <list-cmpt :data="data" :conf="conf"></list-cmpt>
-        </div>
+    <div class="aside-list ">
+        <list-cmpt :data="data" :conf="conf"></list-cmpt>
     </div>
 </template>
 
 <script>
 import ListCmpt from './ListCmpt'
-import { mapGetters } from 'vuex'
 export default {
     name: '',
     props: {
@@ -25,31 +20,17 @@ export default {
         data: {
             type: Object,
             default: () => {}
-        },
-        editFunc: {
-            type: Function,
-            default: () => {}
         }
     },
     components: {
         'list-cmpt': ListCmpt
     },
-    computed: {
-        ...mapGetters(['isEditable'])
-    },
     data () {
-        return {
-            showEdit: false
-        }
+        return { }
     },
     methods: {
-        onMouseEnter () {
-            if (this.isEditable) {
-                this.showEdit = true
-            }
-        },
-        onMouseLeave () {
-            this.showEdit = false
+        onEdit (e) {
+            console.log('onEdit', e)
         }
     }
 }

@@ -2,8 +2,12 @@
     <div class="template">
         <aside>
             <photo-box-cmpt :data="basicInfo"></photo-box-cmpt>
-            <aside-list-cmpt :data="basicInfo" :conf="basicInfoConfs"></aside-list-cmpt>
-            <aside-list-cmpt :data="jobIntention" :conf="jobIntentionConfs"></aside-list-cmpt>
+            <section-box>
+                <aside-list-cmpt :data="basicInfo" :conf="basicInfoConfs"></aside-list-cmpt>
+            </section-box>
+            <section-box>
+                <aside-list-cmpt :data="jobIntention" :conf="jobIntentionConfs"></aside-list-cmpt>
+            </section-box>
         </aside>
         <section>
             <div class="empty-block"></div>
@@ -12,6 +16,7 @@
 </template>
 
 <script>
+import SectionBox from './components/SectionBox'
 import PhotoBoxCmpt from './components/PhotoBoxCmpt'
 import AsideListCmpt from './components/AsideListCmpt'
 
@@ -34,6 +39,7 @@ export default {
         })
     },
     components: {
+        'section-box': SectionBox,
         'photo-box-cmpt': PhotoBoxCmpt,
         'aside-list-cmpt': AsideListCmpt
     },
@@ -46,7 +52,7 @@ export default {
         }
     },
     mounted () {
-        // console.log(this.resumeInfo)
+
     }
 }
 </script>
