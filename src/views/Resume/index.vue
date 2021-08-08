@@ -19,7 +19,7 @@
                 <el-button icon="el-icon-download" @click="downloadResume">导出</el-button>
             </el-form-item>
         </el-form>
-        <component :is="currentTemplate" :resumeInfo="resumeInfo" :editable="editable"></component>
+        <component :is="currentTemplate" :data="resumeInfo" :editable="editable"></component>
     </div>
 </template>
 

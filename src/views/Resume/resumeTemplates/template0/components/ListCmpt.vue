@@ -18,7 +18,7 @@
 <script>
 import ListItemCmpt from './ListItemCmpt.vue'
 import { createNamespacedHelpers } from 'vuex'
-const { mapActions, mapGetters } = createNamespacedHelpers('Resume')
+const { mapActions, mapGetters, mapMutations } = createNamespacedHelpers('Resume')
 
 export default {
     name: '',
@@ -56,6 +56,7 @@ export default {
     },
     methods: {
         ...mapActions(['modifyResumeInfo']),
+        ...mapMutations(['SET_DELETE_SILENTLY']),
         showDeleteListItemDialog (field) {
             this.toDeleteField = field
             // 静默删除
@@ -72,7 +73,7 @@ export default {
             this.hideDeleteListItemDialog()
             this.modifyResumeInfo({ method: 'delete', namespace: this.root, key: this.toDeleteField })
             if (this.deleteSilently) {
-                this.$store.commit('SET_DELETE_SILENTLY', true)
+                this.SET_DELETE_SILENTLY(this.deleteSilently)
             }
         }
     }

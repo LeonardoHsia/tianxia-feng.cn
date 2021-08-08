@@ -1,18 +1,14 @@
 <template>
-    <div>
+    <div class="job-intention-cmpt">
         test
     </div>
 </template>
 
 <script>
+import mixins from '@resume/mixins'
 export default {
     name: '',
-    props: {
-        data: {
-            type: Object,
-            default: () => {}
-        }
-    },
+    mixins,
     data () {
         return { }
     }

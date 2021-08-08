@@ -1,16 +1,19 @@
 <template>
     <div class="template">
-        <aside class="part">
-            <photo-box-cmpt :data="basicInfo"></photo-box-cmpt>
+        <aside class="part aside-part">
+            <photo-box-cmpt :data="data.basicInfo"></photo-box-cmpt>
             <section-box>
-                <aside-list-cmpt :data="basicInfo" :conf="basicInfoConfs"></aside-list-cmpt>
+                <aside-list-cmpt :data="data.basicInfo" :conf="confs.BasicInfoConf"></aside-list-cmpt>
             </section-box>
             <section-box>
-                <aside-list-cmpt :data="jobIntention" :conf="jobIntentionConfs"></aside-list-cmpt>
+                <aside-list-cmpt :data="data.jobIntention" :conf="confs.JobIntentionConf"></aside-list-cmpt>
+            </section-box>
+            <section-box>
+                <content-cmpt :data="data.selfIntroduction" :conf="confs.SelfIntroductionConf"></content-cmpt>
             </section-box>
         </aside>
-        <section class="part">
-            <div class="empty-block"></div>
+        <section class="part section-part">
+
         </section>
     </div>
 </template>
@@ -19,36 +22,40 @@
 import SectionBox from './components/SectionBox'
 import PhotoBoxCmpt from './components/PhotoBoxCmpt'
 import AsideListCmpt from './components/AsideListCmpt'
+import ContentCmpt from './components/ContentCmpt'
 
-import BasicInfoConfs from './configs/basicInfoFields'
-import JobIntentionConfs from './configs/jobIntentionFields'
+import confs from './configs'
 
 export default {
     name: '',
     props: {
-        resumeInfo: {
+        data: {
             type: Object,
             default: () => {}
         }
     },
     created () {
-        Object.keys(this.resumeInfo).forEach(k => {
+        // set all grouped data
+        Object.keys(this.data).forEach(k => {
             Object.assign(this, {
-                [k]: this.resumeInfo[k]
+                [k]: this.data[k]
             })
+        })
+
+        // set confs of all grouped fields
+        Object.keys(confs).forEach(k => {
+            this.$set(this.confs, k, confs[k])
         })
     },
     components: {
         'section-box': SectionBox,
         'photo-box-cmpt': PhotoBoxCmpt,
-        'aside-list-cmpt': AsideListCmpt
+        'aside-list-cmpt': AsideListCmpt,
+        'content-cmpt': ContentCmpt
     },
     data () {
         return {
-            basicInfoConfs: BasicInfoConfs,
-            jobIntentionConfs: JobIntentionConfs,
-            basicInfo: {},
-            jobIntention: {}
+            confs: {}
         }
     },
     mounted () {
@@ -62,12 +69,25 @@ export default {
 
 .template {
     border-top: 1rem solid $themeColor;
+    width: 60%;
+    min-width: 72rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
     .part {
         padding: 1rem;
+
+        &.aside-part {
+            flex-basis: 30%;
+            background: #CACACA;
+        }
+
+        &.section-part {
+            flex-basis: 70%;
+            flex-grow: 1;
+        }
     }
-    aside {
-        background: #CACACA;
-    }
+
 }
 
 </style>

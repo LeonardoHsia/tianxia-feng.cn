@@ -1,3 +1,4 @@
+// 基本信息
 export default {
     title: '基本信息',
     root: 'basicInfo',

@@ -31,9 +31,12 @@ export default {
             },
             // 支持输入文本+数组
             selfIntroduction: {
-                introduceText: '',
+                introduceText: '篇幅不要太长，注意结合简历整体的美观度，内容中应总结经验和特长，突出符合求职岗位职位描述的特点，避免使用过多形容词。例：拥有良好的沟通和协调能力，善于应变，能够快速适应新环境，熟悉使用办公软件，对文件管理十分熟悉。',
                 introducePoints: [
-
+                    '具体细化的某项介绍1',
+                    '具体细化的某项介绍2',
+                    '具体细化的某项介绍3',
+                    '具体细化的某项介绍4'
                 ]
             },
             educations: [
@@ -58,7 +61,7 @@ export default {
             method = String(method).toUpperCase()
             switch (method) {
             case 'DELETE':
-                commit('Resume/DELETE_RESUME_INFO_KEY', { namespace, key })
+                commit('DELETE_RESUME_INFO_KEY', { namespace, key })
                 break
             case 'SET':
                 commit('Resume/SET_RESUME_INFO_KEY', { namespace, key, value })

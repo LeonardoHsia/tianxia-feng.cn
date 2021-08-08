@@ -1,7 +1,7 @@
 <template>
-    <div class="section" :class="{'hover': isHover}" @mouseenter="isHover=true" @mouseleave="isHover=false">
+    <div class="section" :class="{'hover': isHover}" @mouseenter="isHover=true" @mouseleave="isHover=false" v-if="showFlag">
         <div class="button-group">
-            <el-button type="text" icon="el-icon-edit" title="编辑" class="edit-icon" v-if="isHover && isEditable" @click="editFunc"></el-button>
+            <el-button type="text" icon="el-icon-edit" title="编辑" class="edit-icon" v-if="isHover && isEditable" @click="onEdit"></el-button>
             <el-button type="text" icon="el-icon-rank" title="移动" class="move-icon"  v-if="isHover && movable"></el-button>
         </div>
         <h2 class="section-title" v-if="conf.title">{{ conf.title }}</h2>
@@ -15,15 +15,21 @@ const { mapGetters } = createNamespacedHelpers('Resume')
 
 export default {
     name: '',
+    provide () {
+        return {
+            hideSectionProvide: this.onHide,
+            onEdit: this.onEdit,
+            setSectionConfProvide: this.setConf
+        }
+    },
     props: {
-        title: {
-            type: String,
-            default: ''
-        },
         movable: {
             type: Boolean,
             default: true
         }
+    },
+    created () {
+        // bus.$on('onHide', this.onHide)
     },
     computed: {
         ...mapGetters(['isEditable'])
@@ -32,24 +38,23 @@ export default {
         return {
             isHover: false,
             conf: {},
-            defaultSlot: null
+            showFlag: true
         }
     },
     mounted () {
-        this.getDefaultSlot()
+        // this.getDefaultSlot()
     },
     methods: {
-        getDefaultSlot () {
-            const defaultSlots = this.$slots.default
-            if (defaultSlots.length > 1) {
-                throw new Error('Component \'SectionBox\' can only has one single default slot')
-            } else {
-                this.defaultSlot = defaultSlots[0].child
-            }
+        setConf (conf) {
+            Object.keys(conf).forEach(k => {
+                this.$set(this.conf, k, conf[k])
+            })
         },
-        editFunc (e) {
-            const { onEdit } = this.defaultSlot
-            onEdit instanceof Function && onEdit(e)
+        onEdit () {
+
+        },
+        onHide () {
+            this.showFlag = false
         }
     },
     watch: {
@@ -72,6 +77,7 @@ export default {
     background: transparent;
     padding: 1rem 1.5rem;
     width: 100%;
+    cursor: default;
 
     .section-title {
         font-size: 1.2rem;

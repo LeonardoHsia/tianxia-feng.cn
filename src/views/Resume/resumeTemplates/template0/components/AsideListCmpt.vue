@@ -1,27 +1,15 @@
 <template>
-    <div class="aside-list">
+    <div class="aside-list-cmpt">
         <list-cmpt :data="data" :conf="conf"></list-cmpt>
     </div>
 </template>
 
 <script>
 import ListCmpt from './ListCmpt'
+import mixins from '@resume/mixins'
 export default {
     name: '',
-    props: {
-        conf: {
-            type: Object,
-            default: () => ({
-                title: '',
-                root: '',
-                fields: []
-            })
-        },
-        data: {
-            type: Object,
-            default: () => {}
-        }
-    },
+    mixins,
     components: {
         'list-cmpt': ListCmpt
     },

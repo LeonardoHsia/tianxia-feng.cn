@@ -7,6 +7,7 @@ module.exports = {
     configureWebpack: {
         resolve: {
             alias: {
+                '@src': resolve('src'),
                 '@views': resolve('src/views'),
                 '@common': resolve('src/common'),
                 '@consts': resolve('src/common/constants'),
