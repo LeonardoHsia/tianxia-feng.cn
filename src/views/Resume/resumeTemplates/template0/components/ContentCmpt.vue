@@ -1,8 +1,15 @@
 <template>
     <div class="content-cmpt">
-        <template v-if="text && data.introducePoints.length"></template>
-        <button @click="hideSection">Test</button>
-        <button @click="setSectionConf">conf</button>
+        <template v-if="text">
+            {{ text }}
+        </template>
+        <template v-if="list.length">
+            <ul class="list">
+                <li v-for="(item, idx) of list" :key="idx">
+                    {{ item }}
+                </li>
+            </ul>
+        </template>
     </div>
 </template>
 
@@ -24,17 +31,20 @@ export default {
         }
     },
     methods: {
-        hideSection () {
-            this.hideSectionProvide()
-        },
         setSectionConf () {
             this.setSectionConfProvide(this.conf)
         }
     },
     computed: {
         show () {
-            const show = this.text && this.list.length
-            return show
+            return this.text && this.list.length
+        }
+    },
+    watch: {
+        show (val) {
+            if (!val) {
+                this.hideSectionProvide()
+            }
         }
     }
 }
