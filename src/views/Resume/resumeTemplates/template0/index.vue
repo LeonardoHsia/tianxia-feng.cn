@@ -74,6 +74,8 @@ export default {
     margin: 0 auto;
     display: flex;
     flex-direction: row;
+    align-content: stretch;
+
     .part {
         padding: 1rem;
 
