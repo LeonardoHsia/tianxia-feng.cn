@@ -41,12 +41,7 @@ export default {
         }
     },
     methods: {
-        changeDefaultTheme () {
-            this.$store.dispatch('themeChange', 'default')
-        },
-        changeDarkTheme () {
-            this.$store.dispatch('themeChange', 'dark')
-        }
+
     }
 }
 </script>

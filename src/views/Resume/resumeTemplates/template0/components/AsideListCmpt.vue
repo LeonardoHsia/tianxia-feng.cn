@@ -1,5 +1,5 @@
 <template>
-    <div class="aside-list ">
+    <div class="aside-list">
         <list-cmpt :data="data" :conf="conf"></list-cmpt>
     </div>
 </template>

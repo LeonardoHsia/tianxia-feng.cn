@@ -1,10 +1,15 @@
-import { setCookie } from '@common/utils/cookieUtil'
+import { setCookie, deleteCookie } from '@common/utils/cookieUtil'
+import { DEFALT_EXPIRES, DEFAULT_THEME } from '@consts/resume'
 
 export default {
-    namespace: false,
+    namespaced: true,
     state: {
         editable: true,
         deleteSilently: false,
+        theme: {
+            color: DEFAULT_THEME.defaultColor,
+            themeColor: DEFAULT_THEME.defaultThemeColor
+        },
         resumeInfo: {
             basicInfo: {
                 name: '夏天',
@@ -53,10 +58,10 @@ export default {
             method = String(method).toUpperCase()
             switch (method) {
             case 'DELETE':
-                commit('DELETE_RESUME_INFO_KEY', { namespace, key })
+                commit('Resume/DELETE_RESUME_INFO_KEY', { namespace, key })
                 break
             case 'SET':
-                commit('SET_RESUME_INFO_KEY', { namespace, key, value })
+                commit('Resume/SET_RESUME_INFO_KEY', { namespace, key, value })
                 break
             default:
                 throw new Error(`Wrong method ${method}`)
@@ -64,21 +69,45 @@ export default {
         }
     },
     mutations: {
-        'SET_RESUMEINFO' (state, resumeInfo) {
+        SET_RESUMEINFO (state, resumeInfo) {
             state.resumeInfo = resumeInfo
         },
-        'SET_EDITABLE' (state, editable) {
+        SET_EDITABLE (state, editable) {
             state.editable = editable
         },
-        'DELETE_RESUME_INFO_KEY' (state, { namespace, key }) {
+        DELETE_RESUME_INFO_KEY (state, { namespace, key }) {
             state.resumeInfo[namespace][key] = undefined
         },
-        'SET_RESUME_INFO_KEY' (state, { key, value }) {
+        SET_RESUME_INFO_KEY (state, { key, value }) {
             state['resumeInfo' + '.' + key] = value
         },
-        'SET_DELETE_SILENTLY' (state, isSilently) {
+        SET_DELETE_SILENTLY (state, isSilently) {
+            isSilently = !!isSilently
             state.deleteSilently = isSilently
-            setCookie('deleteSilently', isSilently, 60 * 60 * 24 * 7)
+            setCookie('deleteSilently', isSilently, DEFALT_EXPIRES)
+        },
+        RESET_THEME (state) {
+            this.commit('Resume/COLOR_CHANGE')
+            this.commit('Resume/THEME_COLOR_CHANGE')
+        },
+        COLOR_CHANGE (state, color) {
+            color = color || DEFAULT_THEME.defaultColor
+            state.theme.color = color
+            this.commit('Resume/SET_THEME_PROPERTY', { prop: DEFAULT_THEME.colorProp, v: color })
+        },
+        THEME_COLOR_CHANGE (state, themeColor) {
+            themeColor = themeColor || DEFAULT_THEME.defaultThemeColor
+            state.theme.themeColor = themeColor
+            this.commit('Resume/SET_THEME_PROPERTY', { prop: DEFAULT_THEME.themeColorProp, v: themeColor })
+        },
+        SET_THEME_PROPERTY (state, { prop, v }) {
+            if (v) {
+                document.querySelector('html').style.setProperty(prop, v)
+                setCookie(prop, v, DEFALT_EXPIRES)
+            } else {
+                document.querySelector('html').style.removeProperty(prop)
+                deleteCookie(prop)
+            }
         }
     },
     getters: {
@@ -93,6 +122,12 @@ export default {
         },
         isDeleteSilently (state) {
             return state.deleteSilently
+        },
+        getColor (state) {
+            return state.theme.color
+        },
+        getThemeColor (state) {
+            return state.theme.themeColor
         }
     }
 }

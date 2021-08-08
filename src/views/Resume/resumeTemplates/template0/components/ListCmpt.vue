@@ -17,7 +17,9 @@
 
 <script>
 import ListItemCmpt from './ListItemCmpt.vue'
-import { mapActions, mapGetters } from 'vuex'
+import { createNamespacedHelpers } from 'vuex'
+const { mapActions, mapGetters } = createNamespacedHelpers('Resume')
+
 export default {
     name: '',
     props: {
@@ -88,6 +90,7 @@ export default {
     &.editable {
         .list-item {
             cursor: pointer;
+            user-select: none;
         }
     }
 }

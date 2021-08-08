@@ -17,7 +17,7 @@ function setCookie (key, value, timestamp) {
  * @returns
  */
 function getCookie (key) {
-    const c = document.cookie.split(';').map(c => c.split('=')).find(([k, v]) => k === key)
+    const c = document.cookie.split(';').map(c => c.split('=')).find(([k, v]) => k.trim() === key)
     return (c ? decodeURI(c[1]) : null)
 }
 

@@ -12,7 +12,8 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { createNamespacedHelpers } from 'vuex'
+const { mapGetters } = createNamespacedHelpers('Resume')
 
 export default {
     name: 'ListItemCmpt',

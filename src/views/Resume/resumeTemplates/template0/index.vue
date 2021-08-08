@@ -1,6 +1,6 @@
 <template>
     <div class="template">
-        <aside>
+        <aside class="part">
             <photo-box-cmpt :data="basicInfo"></photo-box-cmpt>
             <section-box>
                 <aside-list-cmpt :data="basicInfo" :conf="basicInfoConfs"></aside-list-cmpt>
@@ -9,7 +9,7 @@
                 <aside-list-cmpt :data="jobIntention" :conf="jobIntentionConfs"></aside-list-cmpt>
             </section-box>
         </aside>
-        <section>
+        <section class="part">
             <div class="empty-block"></div>
         </section>
     </div>
@@ -57,8 +57,17 @@ export default {
 }
 </script>
 
-<style lang="scss">
-aside {
-    background: #CACACA;
+<style lang="scss" scoped>
+@import '@resume/static/scss/common.scss';
+
+.template {
+    border-top: 1rem solid $themeColor;
+    .part {
+        padding: 1rem;
+    }
+    aside {
+        background: #CACACA;
+    }
 }
+
 </style>

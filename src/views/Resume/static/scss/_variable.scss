@@ -1,0 +1,7 @@
+@import '@scss/_functions.scss';
+
+$color: var(--color, #000);
+$themeColor: var(--themeColor, #000);
+
+@debug $color;
+@debug $themeColor;

@@ -1,7 +1,10 @@
-$sectionBorderColor: red;
+@import './theme';
+
+$color: $color;
 
 html {
     font-size: 14px;
+    color: $color;
 }
 body {
     div, p, a, section, aside, h1, h2, h3, h4, h5, h6 {
