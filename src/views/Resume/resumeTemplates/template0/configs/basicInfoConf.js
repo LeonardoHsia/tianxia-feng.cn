@@ -4,6 +4,14 @@ export default {
     root: 'basicInfo',
     fields: [
         {
+            label: '姓名',
+            field: 'name',
+            type: 'text',
+            validator: () => {},
+            // onStage: true,
+            change: () => {}
+        },
+        {
             label: '性别',
             field: 'sex',
             type: 'text',

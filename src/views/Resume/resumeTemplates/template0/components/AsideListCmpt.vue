@@ -1,6 +1,6 @@
 <template>
     <div class="aside-list-cmpt">
-        <list-cmpt :data="data" :conf="conf"></list-cmpt>
+        <list-cmpt :data="data" :conf="conf" :list="list"></list-cmpt>
     </div>
 </template>
 
@@ -15,6 +15,11 @@ export default {
     },
     data () {
         return { }
+    },
+    computed: {
+        list () {
+            return this.conf.fields.filter(f => f.onStage && this.data[f.field] !== undefined)
+        }
     },
     methods: {
         onEdit (e) {

@@ -30,6 +30,10 @@ export default {
         data: {
             type: Object,
             default: () => {}
+        },
+        list: {
+            type: Array,
+            default: () => []
         }
     },
     components: {
@@ -40,9 +44,6 @@ export default {
     },
     computed: {
         ...mapGetters(['isEditable', 'isDeleteSilently']),
-        list () {
-            return this.conf.fields.filter(f => f.onStage && this.data[f.field] !== undefined)
-        },
         root () {
             return this.conf.root
         }

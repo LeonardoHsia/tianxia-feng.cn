@@ -1,15 +1,15 @@
 <template>
     <div class="template">
         <aside class="part aside-part">
-            <photo-box-cmpt :data="data.basicInfo"></photo-box-cmpt>
+            <photo-box-cmpt :data="getPhotoBoxData()" :conf="confs.JobIntentionConf"></photo-box-cmpt>
             <section-box>
-                <aside-list-cmpt :data="data.basicInfo" :conf="confs.BasicInfoConf"></aside-list-cmpt>
+                <aside-list-cmpt :data="basicInfo" :conf="confs.BasicInfoConf"></aside-list-cmpt>
             </section-box>
             <section-box>
-                <aside-list-cmpt :data="data.jobIntention" :conf="confs.JobIntentionConf"></aside-list-cmpt>
+                <aside-list-cmpt :data="jobIntention" :conf="confs.JobIntentionConf"></aside-list-cmpt>
             </section-box>
             <section-box>
-                <content-cmpt :data="data.selfIntroduction" :conf="confs.SelfIntroductionConf"></content-cmpt>
+                <content-cmpt :data="selfIntroduction" :conf="confs.SelfIntroductionConf"></content-cmpt>
             </section-box>
         </aside>
         <section class="part section-part">
@@ -47,6 +47,14 @@ export default {
             this.$set(this.confs, k, confs[k])
         })
     },
+    methods: {
+        getPhotoBoxData () {
+            return Object.assign({}, {
+                name: this.basicInfo.name,
+                station: this.jobIntention.station
+            })
+        }
+    },
     components: {
         'section-box': SectionBox,
         'photo-box-cmpt': PhotoBoxCmpt,
@@ -81,7 +89,7 @@ export default {
 
         &.aside-part {
             flex-basis: 30%;
-            background: #CACACA;
+            background: $sectionColor;
         }
 
         &.section-part {

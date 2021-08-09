@@ -2,6 +2,8 @@
 
 $color: var(--color, #000);
 $themeColor: var(--themeColor, #000);
+$sectionColor: var(--sectionColor, #000);
 
 @debug $color;
 @debug $themeColor;
+@debug $sectionColor;

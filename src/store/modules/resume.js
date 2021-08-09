@@ -8,7 +8,8 @@ export default {
         deleteSilently: false,
         theme: {
             color: DEFAULT_THEME.defaultColor,
-            themeColor: DEFAULT_THEME.defaultThemeColor
+            themeColor: DEFAULT_THEME.defaultThemeColor,
+            sectionColor: DEFAULT_THEME.defaultSectionColor
         },
         resumeInfo: {
             basicInfo: {
@@ -23,9 +24,9 @@ export default {
                 photo: ''
             },
             jobIntention: {
-                station: '意向岗位',
-                city: '意向城市',
-                salary: '期望月薪',
+                station: '前端开发',
+                city: '南京',
+                salary: '面议',
                 type: '求职类型',
                 state: '当前状态'
             },
@@ -92,6 +93,7 @@ export default {
         RESET_THEME (state) {
             this.commit('Resume/COLOR_CHANGE')
             this.commit('Resume/THEME_COLOR_CHANGE')
+            this.commit('Resume/SECTION_COLOR_CHANGE')
         },
         COLOR_CHANGE (state, color) {
             color = color || DEFAULT_THEME.defaultColor
@@ -102,6 +104,11 @@ export default {
             themeColor = themeColor || DEFAULT_THEME.defaultThemeColor
             state.theme.themeColor = themeColor
             this.commit('Resume/SET_THEME_PROPERTY', { prop: DEFAULT_THEME.themeColorProp, v: themeColor })
+        },
+        SECTION_COLOR_CHANGE (state, sectionColor) {
+            sectionColor = sectionColor || DEFAULT_THEME.defaultSectionColor
+            state.theme.sectionColor = sectionColor
+            this.commit('Resume/SET_THEME_PROPERTY', { prop: DEFAULT_THEME.sectionColorProp, v: sectionColor })
         },
         SET_THEME_PROPERTY (state, { prop, v }) {
             if (v) {
@@ -131,6 +138,9 @@ export default {
         },
         getThemeColor (state) {
             return state.theme.themeColor
+        },
+        getSectionColor (state) {
+            return state.theme.sectionColor
         }
     }
 }

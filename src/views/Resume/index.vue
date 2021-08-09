@@ -12,6 +12,9 @@
             <el-form-item label="主题色">
                 <el-color-picker type="color" class="color-picker" v-model="resumeForm.themeColor" placeholder="请选择"></el-color-picker>
             </el-form-item>
+            <el-form-item label="块填充色">
+                <el-color-picker type="color" class="color-picker" v-model="resumeForm.sectionColor" placeholder="请选择"></el-color-picker>
+            </el-form-item>
             <el-form-item>
                 <el-button icon="el-icon-refresh" @click="reset">重置</el-button>
             </el-form-item>
@@ -43,6 +46,7 @@ export default {
             resumeForm: {
                 color: '',
                 themeColor: '',
+                sectionColor: '',
                 currentTemplateId: 0
             }
         }
@@ -78,17 +82,19 @@ export default {
     },
     methods: {
         ...mapActions(['setResumeInfo']),
-        ...mapMutations(['SET_DELETE_SILENTLY', 'COLOR_CHANGE', 'THEME_COLOR_CHANGE', 'RESET_THEME']),
-        ...mapGetters(['getColor', 'getThemeColor']),
+        ...mapMutations(['SET_DELETE_SILENTLY', 'COLOR_CHANGE', 'THEME_COLOR_CHANGE', 'SECTION_COLOR_CHANGE', 'RESET_THEME']),
+        ...mapGetters(['getColor', 'getThemeColor', 'getSectionColor']),
         initTheme () {
             this.COLOR_CHANGE(this.$cookieUtil.getCookie(DEFAULT_THEME.colorProp))
             this.THEME_COLOR_CHANGE(this.$cookieUtil.getCookie(DEFAULT_THEME.themeColorProp))
+            this.SECTION_COLOR_CHANGE(this.$cookieUtil.getCookie(DEFAULT_THEME.sectionColorProp))
 
             this.syncTheme()
         },
         syncTheme () {
             this.resumeForm.color = this.getColor()
             this.resumeForm.themeColor = this.getThemeColor()
+            this.resumeForm.sectionColor = this.getSectionColor()
         },
         switchTemplate (v = this.resumeForm.currentTemplateId) {
             const { name } = TEMPLATES.find(({ id }) => id === +v) || TEMPLATES[0]
@@ -133,6 +139,9 @@ export default {
         },
         'resumeForm.themeColor' (v) {
             this.THEME_COLOR_CHANGE(v)
+        },
+        'resumeForm.sectionColor' (v) {
+            this.SECTION_COLOR_CHANGE(v)
         }
     }
 }

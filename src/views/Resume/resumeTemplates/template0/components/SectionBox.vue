@@ -86,8 +86,8 @@ export default {
     }
 
     &.hover {
-        border-color: #333;
-        background: #ddd;
+        border-color: $themeColor;
+        background: rgba(255,255,255,0.5);
     }
 
     .edit-icon, .move-icon {

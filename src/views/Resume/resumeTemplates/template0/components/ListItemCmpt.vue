@@ -79,12 +79,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@resume/static/scss/_variable';
+
 .list-item {
     position: relative;
     padding: .2rem .4rem;
 
     &:hover {
-        background: #eee;
+        background: rgba(0,0,0,0.1);
     }
 
     & > label, & > span {
