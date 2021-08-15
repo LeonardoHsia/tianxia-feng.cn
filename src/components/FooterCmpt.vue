@@ -1,5 +1,5 @@
 <template>
-    <div class="footer no-print">
+    <footer class="footer no-print">
         <p style="margin-bottom: .5rem;">
             <a :href="consts.ICP_SITE">{{ consts.ICP }}</a>
         </p>
@@ -10,7 +10,7 @@
             {{ consts.domain }}.
             All Rights Reserved.
         </p>
-    </div>
+    </footer>
 </template>
 
 <script>
@@ -49,6 +49,7 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 1rem;
 
     a {
         text-decoration: none;

@@ -1,2 +1,19 @@
 $default_theme: #EAA411, #DED6A1, #DCE8ED, #36A8C9, #0F192E;
 $dark_theme: #C82724, #E69F37, #D5AF33, #4C2415, #000002;
+
+$themes: (
+    // 单色搭配
+    monochrome: (
+        level_0: white,
+        level_1: #e7d3a6,
+        level_2: #EAA411 
+    ),
+    // 相邻色搭配
+    adjacent: (
+
+    ),
+    // 对比色搭配
+    contrast: (
+
+    )
+)

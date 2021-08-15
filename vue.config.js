@@ -14,7 +14,8 @@ module.exports = {
                 '@consts': resolve('src/common/constants'),
                 '@utils': resolve('src/utils'),
                 '@scss': resolve('src/common/scss'),
-                '@resume': resolve('src/pages/Resume')
+                '@resume': resolve('src/pages/Resume'),
+                '@assets': resolve('src/assets')
             }
         }
     }

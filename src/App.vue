@@ -1,5 +1,5 @@
 <template>
-    <el-container :class="themeClass">
+    <el-container :class="themeClass" direction="vertical">
         <menu-cmpt></menu-cmpt>
         <router-view></router-view>
         <footer-cmpt></footer-cmpt>
@@ -8,7 +8,7 @@
 
 <script>
 import MenuCmpt from '@components/MenuCmpt'
-import FooterCmpt from '@components/Footer'
+import FooterCmpt from '@components/FooterCmpt'
 export default {
     name: 'App',
     computed: {
@@ -29,7 +29,6 @@ export default {
 <style lang='scss'>
 @import '@scss/common';
 .el-container {
-    width: 100%;
-    flex-direction: column !important;
+    height: 100%;
 }
 </style>

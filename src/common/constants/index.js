@@ -1,3 +1,56 @@
+const Projects = [
+    {
+        name: 'Topo',
+        path: 'topo',
+        component: () => import('@pages/Projects/TopoProj'),
+        meta: {
+            screenshots: [
+                'topo/lifecycle.png'
+            ]
+        }
+    }, {
+        name: 'Graph Drag Editor1',
+        path: 'grapheditor',
+        component: () => import('@pages/Projects/GraphDragEditor'),
+        meta: {
+            screenshots: [
+                'topo/noExisted.png',
+                'topo/lifecycle.png'
+            ]
+        }
+    }, {
+        name: 'Graph Drag Editor2',
+        path: 'grapheditor',
+        component: () => import('@pages/Projects/GraphDragEditor'),
+        meta: {
+            screenshots: [
+                'topo/noExisted.png',
+                'topo/lifecycle.png'
+            ]
+        }
+    }, {
+        name: 'Graph Drag Editor3',
+        path: 'grapheditor',
+        component: () => import('@pages/Projects/GraphDragEditor'),
+        meta: {
+            screenshots: [
+                'topo/noExisted.png',
+                'topo/lifecycle.png'
+            ]
+        }
+    }, {
+        name: 'Graph Drag Editor4',
+        path: 'grapheditor',
+        component: () => import('@pages/Projects/GraphDragEditor'),
+        meta: {
+            screenshots: [
+                'topo/noExisted.png',
+                'topo/lifecycle.png'
+            ]
+        }
+    }
+]
+
 export default {
     routes: [
         {
@@ -8,7 +61,6 @@ export default {
             slient: true
         }, {
             id: 2001,
-            name: '首页',
             path: '/',
             redirect: '/home',
             slient: true
@@ -20,22 +72,19 @@ export default {
         }, {
             id: 2003,
             path: '/home',
-            component: () => import('@pages/Index')
+            component: () => import('@pages/Index'),
+            name: '首页'
         }, {
             id: 2004,
             name: '个人介绍',
             path: '/resume',
             component: () => import('@pages/Resume')
         }, {
-            id: 2005,
-            name: 'Hello World',
-            path: '/helloworld',
-            component: () => import('@pages/HelloWorld')
-        }, {
             id: 2007,
             name: '项目介绍',
-            path: '/project',
-            component: () => import('@pages/Projects')
+            path: '/projects',
+            component: () => import('@pages/Projects'),
+            children: Projects
         }, {
             id: 0,
             name: '404',
@@ -44,4 +93,8 @@ export default {
             slient: true
         }
     ]
+}
+
+export {
+    Projects
 }
