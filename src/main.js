@@ -5,7 +5,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import store from './store'
 import router from './router/index'
 
-import * as CookieUtil from '@common/utils/cookieUtil'
+import * as CookieUtil from '@utils/cookieUtil'
 
 // bus组件
 export const bus = new Vue()

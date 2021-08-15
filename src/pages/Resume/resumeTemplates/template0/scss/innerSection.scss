@@ -1,0 +1,26 @@
+@import '@resume/static/scss/_variable';
+
+@mixin space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.inner-section {
+    padding: .5rem;
+    &:hover {
+        background: $sectionColor;
+    }
+
+    /deep/.inner-title {
+        @include space-between;
+        color: $themeColor;
+        margin: 0;
+    }
+
+    /deep/.inner-sub-title {
+        @include space-between;
+        font-size: 1.2rem;
+        color: $themeColor;
+        margin: .4rem 0;
+    }
+}

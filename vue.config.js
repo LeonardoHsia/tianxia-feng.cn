@@ -8,11 +8,13 @@ module.exports = {
         resolve: {
             alias: {
                 '@src': resolve('src'),
-                '@views': resolve('src/views'),
+                '@components': resolve('src/components'),
+                '@pages': resolve('src/pages'),
                 '@common': resolve('src/common'),
                 '@consts': resolve('src/common/constants'),
+                '@utils': resolve('src/utils'),
                 '@scss': resolve('src/common/scss'),
-                '@resume': resolve('src/views/Resume')
+                '@resume': resolve('src/pages/Resume')
             }
         }
     }

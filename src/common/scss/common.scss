@@ -4,30 +4,13 @@ body {
     margin: 0;    
 }
 
-// body {
-//     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-//     a {
-//         text-decoration: none;
-//         cursor: pointer;
-//     }
+a {
+    text-decoration: none;
+    &[href] {
+        cursor: pointer;
+    }
+}
 
-//     .light-text {
-
-//     }
-//     .under-line {
-//         text-decoration: underline;
-//     }
-//     @mixin full-width {
-//         width: 100%;
-//     }
-//     .flex-center {
-//         justify-content: center;
-//     }
-//     .router-view {
-//         @include full-width;
-//     }
-
-// }
 @mixin button($value: default) {
     background-color: themed('btn-#{$value}-background');
     color: themed('btn-#{$value}-color');
@@ -79,5 +62,11 @@ body {
         &.lg {
             @include btn-size-lg;
         }
+    }
+}
+
+@media print {
+    .no-print {
+        display: none !important;
     }
 }
