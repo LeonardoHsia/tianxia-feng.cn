@@ -1,33 +1,25 @@
 <template>
     <div class="image-slider">
-        <div class="image" v-for="(image, idx) in images" :key="idx" :style="{backgroundImage: `url(${getImageAbsoluteUrl(image)})`}"></div>
+        <div class="image" v-for="(image, idx) in images" :key="idx" :style="{backgroundImage: `url(${getImage(image)})`}"></div>
     </div>
 </template>
 
 <script>
-import demoImage from '@assets/images/demo.png'
+import { getImageAbsoluteUrl } from '@utils'
 export default {
     name: '',
     props: {
         images: {
             type: Array,
             default: () => []
-        },
-        prefix: {
-            type: String,
-            default: ''
         }
     },
     data () {
         return { }
     },
     methods: {
-        getImageAbsoluteUrl (relativeUrl) {
-            try {
-                return require(`@assets/images/${this.prefix}/${relativeUrl}`)
-            } catch (e) {
-                return demoImage
-            }
+        getImage (relativeUrl) {
+            return getImageAbsoluteUrl(relativeUrl)
         }
     }
 }

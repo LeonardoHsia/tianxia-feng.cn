@@ -6,7 +6,7 @@
             <el-breadcrumb-item v-if="project">{{ projectName }}</el-breadcrumb-item>
         </el-breadcrumb>
         <el-row v-if="!project" class="project-link-list" :gutter="40">
-            <el-col v-for="(project, idx) in projects" :key="idx" class="project-link-box" :span="6" style="margin-bottom: 4rem">
+            <el-col v-for="(project, idx) in projects" :key="idx" class="project-link-box" :span="8" style="margin-bottom: 2rem">
                 <router-link class="project-link" :to="`${PROJECTS_URL}/${project.path}`">
                     <project-item-cmpt :project="project">{{ project.name }}</project-item-cmpt>
                 </router-link>
@@ -62,7 +62,6 @@ export default {
 <style lang="scss">
 .project-link-list {
     .project-link-box {
-        height: 10rem;
 
         .project-link {
             display: block;

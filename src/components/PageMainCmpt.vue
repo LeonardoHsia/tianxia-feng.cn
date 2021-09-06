@@ -19,11 +19,13 @@ export default {
 <style lang="scss">
 .page-main {
     padding: 1.5rem 2rem;
-    height: 100%;
+    min-height: calc(100% - 14rem);
     flex-grow: 1;
 
     .page-main-body {
         padding: 1.5rem 0;
+        height: calc(100% - 1rem);
+        box-sizing: border-box;
     }
 }
 </style>

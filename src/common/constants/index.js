@@ -4,49 +4,14 @@ const Projects = [
         path: 'topo',
         component: () => import('@pages/Projects/TopoProj'),
         meta: {
-            screenshots: [
-                'topo/lifecycle.png'
-            ]
+            screenshot: 'topo/readOnlyMap.png'
         }
     }, {
         name: 'Graph Drag Editor1',
         path: 'grapheditor',
         component: () => import('@pages/Projects/GraphDragEditor'),
         meta: {
-            screenshots: [
-                'topo/noExisted.png',
-                'topo/lifecycle.png'
-            ]
-        }
-    }, {
-        name: 'Graph Drag Editor2',
-        path: 'grapheditor',
-        component: () => import('@pages/Projects/GraphDragEditor'),
-        meta: {
-            screenshots: [
-                'topo/noExisted.png',
-                'topo/lifecycle.png'
-            ]
-        }
-    }, {
-        name: 'Graph Drag Editor3',
-        path: 'grapheditor',
-        component: () => import('@pages/Projects/GraphDragEditor'),
-        meta: {
-            screenshots: [
-                'topo/noExisted.png',
-                'topo/lifecycle.png'
-            ]
-        }
-    }, {
-        name: 'Graph Drag Editor4',
-        path: 'grapheditor',
-        component: () => import('@pages/Projects/GraphDragEditor'),
-        meta: {
-            screenshots: [
-                'topo/noExisted.png',
-                'topo/lifecycle.png'
-            ]
+            screenshot: 'topo/noExisted.png'
         }
     }
 ]

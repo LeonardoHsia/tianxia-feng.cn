@@ -29,6 +29,6 @@ export default {
 <style lang='scss'>
 @import '@scss/common';
 .el-container {
-    height: 100%;
+    min-height: 100%;
 }
 </style>

@@ -1,12 +1,13 @@
 <template>
     <div class="project-item">
-        <image-slider-cmpt :images="screenshots" prefix="projects"></image-slider-cmpt>
-        {{ project.name }}
+        <image-zoom-cmpt :image="getImage(screenshot)" :size="{height: '16rem'}"></image-zoom-cmpt>
+        <p class="peoject-name">{{ project.name }}</p>
     </div>
 </template>
 
 <script>
-import ImageSliderCmpt from '@components/ImageSliderCmpt'
+import { getImageAbsoluteUrl } from '@utils'
+import ImageZoomCmpt from '@components/ImageZoomCmpt'
 export default {
     name: '',
     props: {
@@ -19,18 +20,24 @@ export default {
         }
     },
     data () {
-        return { }
+        return {
+            prefix: 'projects'
+        }
     },
     computed: {
-        screenshots () {
+        screenshot () {
             const { meta = {} } = this.project
-            const screenshots = meta.screenshots || []
-            console.log(screenshots)
-            return screenshots
+            const screenshot = meta.screenshot || []
+            return screenshot
         }
     },
     components: {
-        'image-slider-cmpt': ImageSliderCmpt
+        'image-zoom-cmpt': ImageZoomCmpt
+    },
+    methods: {
+        getImage (url) {
+            return getImageAbsoluteUrl(this.prefix + url)
+        }
     }
 }
 </script>
@@ -39,5 +46,9 @@ export default {
 .project-item {
     width: 100%;
     height: 100%;
+
+    .peoject-name {
+        text-align: center;
+    }
 }
 </style>
